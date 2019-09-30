@@ -1,0 +1,25 @@
+{
+  "name": "zhouboxi",
+  "url": "https://github.com/zhouboxi",
+  "page": 88,
+  "isNonProfit": true,
+  "address": {
+    "street": "宝安区.",
+    "city": "广东深圳",
+    "country": "中国"
+  },
+  "links": [
+    {
+      "name": "Google",
+      "url": "http://www.google.com"
+    },
+    {
+      "name": "Baidu",
+      "url": "http://www.baidu.com"
+    },
+    {
+      "name": "SoSo",
+      "url": "http://www.SoSo.com"
+    }
+  ]
+}

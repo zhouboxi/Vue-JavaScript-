@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-else-if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+<div id="vue">
+    <div v-if="message === 'A'">A</div>
+    <div v-else-if="message === 'A'">A</div>
+    <div v-else-if="message === 'C'">C</div>
+    <div v-else>什么都没有</div>
+</div>
+<script type="text/javascript">
+    var vm =new Vue({
+        el:"#vue",
+        data:{
+            message: 'ok'
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+<div id="vue">
+    <li v-for="item in items">
+        {{item.message}}
+    </li>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#vue",
+        data: {
+            items:[
+                {message:'tom'},
+                {message:'jone'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

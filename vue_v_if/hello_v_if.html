@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v_if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+<div id="vue">
+    <div v-if="message === 'ok'">ok</div>
+    <div v-else>no</div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vue',
+        data: {
+            message: 'ok'
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v_on</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue">
+        <button v-on:click="sayHi">点击触发</button>
+    </div>
+<script type="text/javascript">
+    var vm =new Vue({
+        el:"#vue",
+        data: {
+            message:"hello"
+        },
+        methods: {
+            sayHi :function () {
+                //this在方法指向当前vue对象
+                alert(this.message);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <form id="vue">
+        单行文本:<input type="text" v-model="input_message"/>&nbsp;&nbsp;单行文本是:{{input_message}}
+        <br/>
+        多行文本: <textarea v-model="textarea_message"></textarea>&nbsp;&nbsp;多行文本:{{textarea_message}}
+        <br/>
+        单复选框:<input type="checkbox" id="checkbox" v-model="checked"/>&nbsp;&nbsp;<label for="checkbox">{{checked}}</label>
+        <br/>
+        多复选框:
+        <input type="checkbox" id="jack" value="jack" v-model="checkedNames"/><label for="jack">Jack</label>
+        <input type="checkbox" id="jone" value="jone" v-model="checkedNames"/><label for="jone">Jone</label>
+        <input type="checkbox" id="tom" value="tom" v-model="checkedNames"/><label for="tom">Tom</label>
+        <span>选中的值:{{checkedNames}}</span>
+        <br/>
+        单选按钮:
+        <input type="radio" id="one" value="one" v-model="picked"/><label for="one">One</label>
+        <input type="radio" id="two" value="two" v-model="picked"/><label for="two">Two</label>
+        <span>选中的值:{{picked}}</span>
+        <br/>
+        下拉框:
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select>
+        <span>选中的值:{{selected}}</span>
+        <br>
+        <ul>
+            <my-component-li></my-component-li>
+        </ul>
+        <ul>
+            <my-component-item v-for="item in items" v-bind:item="item"></my-component-item>
+        </ul>
+        <p>调用当前时间的方法:{{currentTime1()}}</p>
+        <p>当前时间的计算属性:{{currentTime}}</p>
+        <todo>
+            <todo-title slot="todo-title" v-bind:title="title"></todo-title>
+            <todo-items slot="todo-items" v-for="(item,index) in items" v-bind:item="item" v-bind:index="index"></todo-items>
+        </todo>
+    </form>
+    <script type="text/javascript">
+        //先注册组件
+        Vue.component('my-component-li',{
+            template: '<li>hello</li>'
+        });
+        //组件传参
+        Vue.component('my-component-item',{
+            props: ['item'],
+            template: '<li>Hello {{item}}</li>'
+        });
+        //定义一个主键包含子组件
+        Vue.component("todo",{
+            template: '<div>\
+                        <slot name="todo-title"></slot>\
+                        <ul>\
+                        <slot name="todo-items"></slot>\
+                        </ul>\
+                       </div>'
+        });
+        //这里是直接复制不用v-bind 如果用那么需要在data 里面写title
+        Vue.component('todo-title',{
+            props: ['title'],
+            template: '<div> {{title}}</div>'
+        });
+        Vue.component('todo-items',{
+            props: ['item','index'],
+            template: '<li>{{index + 1}}. {{item}}</li>'
+        });
+        //再实例化vue
+        var vm = new Vue({
+            el: "#vue",
+            data:{
+                input_message :"hello",
+                textarea_message :"hello",
+                checked : false,
+                checkedNames : [],
+                picked : '',
+                selected : '',
+                title : 'Hellos',
+                items: ['tom','jone','jack']
+            },
+            methods:{
+                currentTime1:function () {
+                    return Date.now();
+                }
+            },
+            //计算属性第一次获取值然后把该数据当做静态属性来处理
+            //但是这里面方法不能喝methods里面方法重名
+            computed:{
+                currentTime:function () {
+                    return Date.now();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
